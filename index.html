@@ -1,9 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oluwaseun Noah Adeyeye | Modern Portfolio</title>
+    <script>
+      // Redirect to the new home page
+      window.location.replace("home.html");
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <link
@@ -87,7 +91,9 @@
       }
 
       .hover-scale {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
       }
 
       .hover-scale:hover {
@@ -1243,7 +1249,7 @@
                   <span class="text-xs text-gray-600">Instagram</span>
                 </a>
                 <a
-                  href="mailto:oluwasuen.adeyeye@bison.howard.edu"
+                  href="mailto:oluwaseun.adeyeye@bison.howard.edu"
                   class="social-icon flex flex-col items-center justify-center p-4 rounded-full bg-gray-50 hover:bg-gray-100 transition hover-scale col-span-2 md:col-span-1"
                 >
                   <i class="fas fa-envelope text-2xl text-primary mb-2"></i>
@@ -1256,10 +1262,10 @@
                   For professional inquiries, please email:
                 </p>
                 <a
-                  href="mailto:oluwasuen.adeyeye@bison.howard.edu"
+                  href="mailto:oluwaseun.adeyeye@bison.howard.edu"
                   class="text-primary font-medium text-lg hover:text-primary-dark transition"
                 >
-                  oluwasuen.adeyeye@bison.howard.edu
+                  oluwaseun.adeyeye@bison.howard.edu
                 </a>
               </div>
             </div>
@@ -1362,7 +1368,7 @@
               });
 
               const correspondingLink = document.querySelector(
-                `nav a[href="#${section.id}"]`
+                `nav a[href="#${section.id}"]`,
               );
               if (correspondingLink) {
                 correspondingLink.classList.add("text-primary");

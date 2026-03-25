@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Oluwaseun Noah Adeyeye</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap");
+
+      :root {
+        --primary: #4361ee;
+        --secondary: #3f37c9;
+        --accent: #4cc9f0;
+        --dark: #1a1a2e;
+        --light: #f8f9fa;
+        --text: #2b2d42;
+        --highlight: #7209b7;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: white;
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      #cursor {
+        width: 50px;
+        height: 50px;
+        background: var(--primary);
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 99999;
+        filter: url(#goo);
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease;
+      }
+
+      svg {
+        position: absolute;
+        width: 0;
+        height: 0;
+      }
+
+      .heading {
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .primary-gradient {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .hover-scale:hover {
+        transform: scale(1.05);
+      }
+
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-link {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        background: var(--primary);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .nav-link.active::after {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SVG Filter for Cursor -->
+    <svg>
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+            result="goo"
+          />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex-shrink-0">
+            <a
+              href="home.html"
+              class="text-2xl font-bold text-gray-900 heading"
+            >
+              Noah <span class="text-primary">Adeyeye</span>
+            </a>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a
+                href="home.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Home
+              </a>
+              <a
+                href="about.html"
+                class="nav-link active text-gray-900 font-medium"
+              >
+                About
+              </a>
+              <a
+                href="research.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Research
+              </a>
+              <a
+                href="projects.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Projects
+              </a>
+              <a
+                href="creative.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Creative
+              </a>
+              <a
+                href="contact.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+          <div class="md:hidden">
+            <button
+              type="button"
+              class="text-gray-600 hover:text-gray-900 focus:outline-none"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+      <!-- Hero Section -->
+      <section class="py-20 relative overflow-hidden bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold text-gray-900 heading mb-4">
+              My <span class="text-primary">Story</span>
+            </h1>
+            <div class="w-24 h-1 primary-gradient mx-auto"></div>
+            <p class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto">
+              From dismantling electronics as a child to conducting research at
+              world-class institutions, my journey has been driven by curiosity
+              and a passion for innovation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Personal Story Section -->
+      <section class="py-20 relative overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 class="text-3xl font-bold text-gray-900 mb-6 heading">
+                The Journey Begins
+              </h2>
+              <p class="text-gray-600 mb-6 text-lg">
+                I've always been fascinated by technology. From dismantling
+                electronics as a child to creating digital art and animations,
+                my curiosity has driven me to explore multiple disciplines.
+              </p>
+              <p class="text-gray-600 mb-6 text-lg">
+                At Howard University, I've found the perfect environment to
+                merge my passions for engineering, mathematics, and science. My
+                research experiences at Howard, Caltech, Stanford and NASA JPL
+                have further fueled my ambition to contribute to cutting-edge
+                technologies in integrated photonics.
+              </p>
+              <p class="text-gray-600 mb-6 text-lg">
+                Beyond academics, I love going to the gym, and reading
+                (especially comics). These outlets provide balance to my
+                technical pursuits and often inspire innovative approaches to my
+                problems.
+              </p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="grid-item glass-card rounded-xl overflow-hidden hover-scale"
+              >
+                <img
+                  src="images/66D92D9B-966D-44DF-9694-C19B48739572_share.jpg"
+                  alt="Family"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div
+                class="grid-item glass-card rounded-xl overflow-hidden hover-scale"
+              >
+                <img
+                  src="images/IMG_1768.jpeg"
+                  alt="School Life"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div
+                class="grid-item glass-card rounded-xl overflow-hidden hover-scale"
+              >
+                <img
+                  src="images/IMG_2878.jpeg"
+                  alt="Fitness"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div
+                class="grid-item glass-card rounded-xl overflow-hidden hover-scale"
+              >
+                <img
+                  src="images/IMG_3202 2.jpg"
+                  alt="Comic Art"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Academic Background Section -->
+      <section class="py-20 relative overflow-hidden bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 heading mb-4">
+              Academic <span class="text-primary">Background</span>
+            </h2>
+            <div class="w-24 h-1 primary-gradient mx-auto"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-university text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Howard University
+              </h3>
+              <p class="text-gray-600">
+                Senior Electrical Engineering major with Mathematics and
+                Computer Science minors
+              </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-microscope text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Research Experience
+              </h3>
+              <p class="text-gray-600">
+                Conducted research at Howard, Caltech, Stanford, and NASA JPL
+              </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-lightbulb text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Specialization
+              </h3>
+              <p class="text-gray-600">
+                Focused on integrated photonics and cutting-edge technologies
+              </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-rocket text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Innovation
+              </h3>
+              <p class="text-gray-600">
+                Passionate about entrepreneurship and creative technologies
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Personal Interests Section -->
+      <section class="py-20 relative overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 heading mb-4">
+              Beyond <span class="text-primary">Academics</span>
+            </h2>
+            <div class="w-24 h-1 primary-gradient mx-auto"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-dumbbell text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Fitness & Wellness
+              </h3>
+              <p class="text-gray-600">
+                Regular gym sessions help maintain physical and mental balance,
+                providing clarity for complex engineering problems.
+              </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-book text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Reading & Comics
+              </h3>
+              <p class="text-gray-600">
+                Passionate about reading, especially comics, which often inspire
+                innovative approaches to technical challenges.
+              </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-palette text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Creative Expression
+              </h3>
+              <p class="text-gray-600">
+                Digital art, animation, and creative writing provide outlets for
+                artistic expression and innovative thinking.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="py-20 relative overflow-hidden bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 heading">
+            Ready to Learn More?
+          </h2>
+          <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            Explore my research, projects, and creative work to get a complete
+            picture of who I am and what I do.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a
+              href="research.html"
+              class="px-6 py-3 primary-gradient rounded-full text-white font-medium hover:shadow-lg transition-all hover-scale"
+            >
+              View My Research
+            </a>
+            <a
+              href="projects.html"
+              class="px-6 py-3 border border-primary rounded-full text-primary font-medium hover:bg-primary/10 transition-all hover-scale"
+            >
+              See My Projects
+            </a>
+            <a
+              href="creative.html"
+              class="px-6 py-3 border border-primary rounded-full text-primary font-medium hover:bg-primary/10 transition-all hover-scale"
+            >
+              Explore Creative Work
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4 heading">Noah Adeyeye</h3>
+            <p class="text-gray-400">
+              Electrical Engineer | Researcher | Entrepreneur
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="home.html" class="text-gray-400 hover:text-white"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="research.html" class="text-gray-400 hover:text-white"
+                  >Research</a
+                >
+              </li>
+              <li>
+                <a href="projects.html" class="text-gray-400 hover:text-white"
+                  >Projects</a
+                >
+              </li>
+              <li>
+                <a href="creative.html" class="text-gray-400 hover:text-white"
+                  >Creative</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Connect</h4>
+            <div class="flex space-x-4">
+              <a
+                href="https://www.linkedin.com/in/noah-adeyeye"
+                class="text-gray-400 hover:text-white"
+              >
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a
+                href="https://github.com/noahadeyeye"
+                class="text-gray-400 hover:text-white"
+              >
+                <i class="fab fa-github text-xl"></i>
+              </a>
+              <a
+                href="mailto:noah.adeyeye@bison.howard.edu"
+                class="text-gray-400 hover:text-white"
+              >
+                <i class="fas fa-envelope text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2024 Oluwaseun Noah Adeyeye. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Custom cursor
+      const cursor = document.getElementById("cursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Mobile menu toggle
+      const mobileMenuButton = document.querySelector(".md\\:hidden button");
+      const mobileMenu = document.querySelector(".md\\:hidden");
+
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener("click", () => {
+          // Add mobile menu functionality here
+          console.log("Mobile menu clicked");
+        });
+      }
+    </script>
+  </body>
+</html>
+
+

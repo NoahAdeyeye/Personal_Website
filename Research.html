@@ -1,240 +1,789 @@
 <!DOCTYPE html>
-<!--
-	Twenty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<html lang="en">
   <head>
-    <title>Research</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research - Oluwaseun Noah Adeyeye</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap");
+
+      :root {
+        --primary: #4361ee;
+        --secondary: #3f37c9;
+        --accent: #4cc9f0;
+        --dark: #1a1a2e;
+        --light: #f8f9fa;
+        --text: #2b2d42;
+        --highlight: #7209b7;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: white;
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      #cursor {
+        width: 50px;
+        height: 50px;
+        background: var(--primary);
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 99999;
+        filter: url(#goo);
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease;
+      }
+
+      svg {
+        position: absolute;
+        width: 0;
+        height: 0;
+      }
+
+      .heading {
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .primary-gradient {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .hover-scale:hover {
+        transform: scale(1.05);
+      }
+
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-link {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        background: var(--primary);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .perspective {
+        perspective: 1000px;
+      }
+      .transform-style-preserve {
+        transform-style: preserve-3d;
+      }
+      .project-card-inner.rotate {
+        transform: rotateY(180deg);
+      }
+      .backface-hidden {
+        backface-visibility: hidden;
+      }
+      .rotate-y-180 {
+        transform: rotateY(180deg);
+      }
+    </style>
   </head>
-  <body class="right-sidebar is-preload">
-    <div id="page-wrapper">
-      <!-- Header -->
-      <header id="header">
-        <h1 id="logo">
-          <a href="index.html"
-          >Oluwaseun Noah Adeyeye <span>Personal Portfolio</span></a
-        >
-      </h1>
-        </h1>
-        <nav id="nav">
-          <ul>
-            <li class="current"><a href="index.html">Welcome</a></li>
-            <li class="submenu">
-              <a href="#">Pages</a>
-              <ul>
-                <li><a href="Resume.html">Resume</a></li>
-                <li><a href="Curriculum-Vitae.html">Curriculum Vitae</a></li>
-                <li><a href="Research.html">Research</a></li>
+  <body>
+    <!-- SVG Filter for Cursor -->
+    <svg>
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+            result="goo"
+          />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
 
-                <li class="submenu">
-                  <a href="#">Personal Projects</a>
-                  <ul>
-                    <li>
-                      <a href="Tree-Technologies.html">Tree Technologies</a>
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex-shrink-0">
+            <a
+              href="home.html"
+              class="text-2xl font-bold text-gray-900 heading"
+            >
+              Noah <span class="text-primary">Adeyeye</span>
+            </a>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a
+                href="home.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Home
+              </a>
+              <a
+                href="about.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                About
+              </a>
+              <a
+                href="research.html"
+                class="nav-link active text-gray-900 font-medium"
+              >
+                Research
+              </a>
+              <a
+                href="projects.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Projects
+              </a>
+              <a
+                href="creative.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Creative
+              </a>
+              <a
+                href="contact.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+          <div class="md:hidden">
+            <button
+              type="button"
+              class="text-gray-600 hover:text-gray-900 focus:outline-none"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+      <!-- Hero Section -->
+      <section class="py-20 relative overflow-hidden bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold text-gray-900 heading mb-4">
+              Research <span class="text-primary">Projects</span>
+            </h1>
+            <div class="w-24 h-1 primary-gradient mx-auto"></div>
+            <p class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto">
+              Exploring the frontiers of integrated photonics, materials
+              science, and space technology through research at world-class
+              institutions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Projects Section -->
+      <section class="py-20 relative overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Stanford Research Card -->
+            <div class="project-card perspective h-[500px] relative">
+              <div
+                class="project-card-inner absolute inset-0 transition-transform duration-700 transform-style-preserve"
+                onclick="this.classList.toggle('rotate')"
+              >
+                <div
+                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col hover-scale"
+                >
+                  <div class="flex-grow">
+                    <div
+                      class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+                    >
+                      <i class="fas fa-atom text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 heading">
+                      Stanford University
+                    </h3>
+                    <p class="text-gray-600">
+                      Research on upconversion photonics with the Congreve Lab,
+                      focusing on developing novel materials for efficient
+                      photon upconversion applications.
+                    </p>
+                  </div>
+                  <div class="mt-4">
+                    <span
+                      class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary"
+                      >Photonics</span
+                    >
+                    <span
+                      class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-accent/10 text-accent"
+                      >Materials Science</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="project-card-back absolute w-full h-full backface-hidden transform rotate-y-180 glass-card rounded-xl p-6 flex flex-col justify-center"
+                >
+                  <h4 class="text-xl font-bold text-gray-900 mb-3 heading">
+                    Key Contributions
+                  </h4>
+                  <ul class="text-gray-600 space-y-2">
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i
+                      ><span
+                        >Improved on characterization techniques for
+                        upconversion materials</span
+                      >
                     </li>
-                    <li><a href="Youtube.html">Youtube</a></li>
-                    <li><a href="Writing-Art.html">Writing / Art</a></li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i
+                      ><span
+                        >Optimized experimental protocols for improved data
+                        collection</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i
+                      ><span
+                        >Presented findings at the Leadership Alliance Research
+                        Conference</span
+                      >
+                    </li>
                   </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
-      <!-- Main -->
-      <article id="main">
-        <header class="special container">
-          <h2><strong>Research</strong></h2>
-        </header>
-
-        <!-- One -->
-        <section class="wrapper style4 container">
-          <div class="row gtr-150">
-            <div class="col-8 col-12-narrower">
-              <!-- Content -->
-              <div class="content">
-                <section>
-                  <a href="#" class="image featured"
-                    ><img src="images/IMG_2592 2.jpeg" alt=""
-                  /></a>
-                  <header>
-                    <h3>My Research</h3>
-                  </header>
-                  <p>
-                    In Summer 2024, I conducted research at Stanford University under the guidance of Dr. Daniel Congreve and graduate student Pournima Narayanan. My work focused on upconversion,
-                     a process that converts low-energy photons into higher-energy photons using organic and inorganic semiconducting materials. Specifically, I explored near-infrared-to-visible 
-                     upconversion, which has promising applications in fields like photovoltaics, night vision, and anti-counterfeiting. A significant challenge in this technology is its low efficiency,
-                      often due to the limited photoluminescence quantum yields of the emissive materials. In our study, we investigated various emitters and optimized device architectures to
-                       improve upconversion efficiency, achieving record-breaking results. This research represents a critical step toward making upconversion materials viable for real-world applications.
-                  </p>
-                  <p>
-                    In Summer 2023, I interned at NASA's Jet Propulsion Laboratory, working with Dr. Pin Chen and Dr. Su Yan on optimizing 
-                    pupil-apodization basis sets for telescope-coronagraph design. My project involved transitioning code from C++ to Julia
-                     to develop a simulation tool for minimizing solar interference in telescope imagery. This transition required extensive code 
-                     conversion, debugging, and testing. Despite the technical challenges, I successfully implemented key functions to generate and
-                      visualize pupil designs using Julia. The project made significant strides in optimizing coronagraph designs, contributing to advancements in telescope technology.
-                  </p>
-                  <p>
-                    During the academic year at Howard University, I continued my research with NASA JPL under Dr. Su Yan, focusing on refining the
-                     Julia code I had developed during the summer. This ongoing work involves testing and validating the simulation tool, solving generalized 
-                     eigenvalue problems (GEVP), and ensuring the accuracy of coronagraph pupil designs. By improving the tool's functionality and reliability,
-                      my research aims to enhance telescope-coronagraph design and expand its applications, while also contributing to the open-source resources 
-                      available for this field.
-                  </p>
-                </section>
+                  <a
+                    href="https://congrevelab.stanford.edu/"
+                    target="_blank"
+                    class="mt-6 inline-flex items-center text-primary hover:text-primary-dark transition"
+                    >Visit Lab Website<i
+                      class="fas fa-external-link-alt ml-2"
+                    ></i
+                  ></a>
+                </div>
               </div>
             </div>
-            <div class="col-4 col-12-narrower">
-              <!-- Sidebar -->
-              <div class="sidebar">
-                <section>
-                  <header>
-                    <h3>Why Research?</h3>
-                  </header>
-                  <p>
-                    My passion for research stems from a desire to use technology to improve lives.
-                    As I prepare to pursue a Ph.D. in Electrical Engineering, I am motivated by the belief that research has the potential to
-                     drive transformative innovations that can make a meaningful impact on the world.
-                  </p>
-                </section>
 
-                <section>
-                  <header></header>
-                    <h3>Presenting Research</h3>
-                  </header>
-                  <a href="#" class="image featured"
-                    ><img src="images/IMG_5227.jpeg" alt=""
-                    ><img src="images/IMG_2077.jpg" alt=""
-                    ><img src="images/IMG_2421.jpeg" alt=""
-                  /></a>
-                  
-                  
-                </section>
+            <!-- NASA JPL Research Card -->
+            <div class="project-card perspective h-[500px] relative">
+              <div
+                class="project-card-inner absolute inset-0 transition-transform duration-700 transform-style-preserve"
+                onclick="this.classList.toggle('rotate')"
+              >
+                <div
+                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col hover-scale"
+                >
+                  <div class="flex-grow">
+                    <div
+                      class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+                    >
+                      <i
+                        class="fas fa-satellite-dish text-2xl text-primary"
+                      ></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 heading">
+                      NASA JPL
+                    </h3>
+                    <p class="text-gray-600">
+                      Worked on coronagraph design and simulation tool
+                      development in Julia, contributing to exoplanet detection
+                      technologies.
+                    </p>
+                  </div>
+                  <div class="mt-4">
+                    <span
+                      class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary"
+                      >Space Tech</span
+                    >
+                    <span
+                      class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-accent/10 text-accent"
+                      >Julia Programming</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="project-card-back absolute w-full h-full backface-hidden transform rotate-y-180 glass-card rounded-xl p-6 flex flex-col justify-center"
+                >
+                  <h4 class="text-xl font-bold text-gray-900 mb-3 heading">
+                    Key Contributions
+                  </h4>
+                  <ul class="text-gray-600 space-y-2">
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i
+                      ><span
+                        >Developed simulation tools for coronagraph performance
+                        analysis</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i
+                      ><span
+                        >Implemented numerical methods for optical system
+                        modeling</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i
+                      ><span
+                        >Contributed to documentation and code
+                        optimization</span
+                      >
+                    </li>
+                  </ul>
+                  <a
+                    href="https://www.sudoem.com/people"
+                    target="_blank"
+                    class="mt-6 inline-flex items-center text-primary hover:text-primary-dark transition"
+                    >Visit Lab Website<i
+                      class="fas fa-external-link-alt ml-2"
+                    ></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caltech Research Card -->
+            <div class="project-card perspective h-[500px] relative">
+              <div
+                class="project-card-inner absolute inset-0 transition-transform duration-700 transform-style-preserve"
+                onclick="this.classList.toggle('rotate')"
+              >
+                <div
+                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col hover-scale"
+                >
+                  <div class="flex-grow">
+                    <div
+                      class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+                    >
+                      <i class="fas fa-lightbulb text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 heading">
+                      Caltech
+                    </h3>
+                    <p class="text-gray-600">
+                      Conducted research in the Marandi Lab on thin-film lithium
+                      niobate mode-locked lasers, focusing on nonlinear
+                      photonics, optoelectronic feedback, and integrated
+                      photonic circuits.
+                    </p>
+                  </div>
+                  <div class="mt-4">
+                    <span
+                      class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary"
+                      >Nonlinear Photonics</span
+                    >
+                    <span
+                      class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-accent/10 text-accent"
+                      >Integrated Photonics</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="project-card-back absolute w-full h-full backface-hidden transform rotate-y-180 glass-card rounded-xl p-6 flex flex-col justify-center"
+                >
+                  <h4 class="text-xl font-bold text-gray-900 mb-3 heading">
+                    Key Contributions
+                  </h4>
+                  <ul class="text-gray-600 space-y-2">
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                      <span
+                        >Developed and tested regenerative RF feedback loops for
+                        mode-locking stability</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                      <span
+                        >Worked on fabrication-informed modeling of thin-film
+                        lithium niobate devices</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                      <span
+                        >Collected and analyzed beat-note data to evaluate laser
+                        performance</span
+                      >
+                    </li>
+                  </ul>
+                  <a
+                    href="https://light.caltech.edu/"
+                    target="_blank"
+                    class="mt-6 inline-flex items-center text-primary hover:text-primary-dark transition"
+                    >Visit Lab Website<i
+                      class="fas fa-external-link-alt ml-2"
+                    ></i
+                  ></a>
+                </div>
               </div>
             </div>
           </div>
-        </section>
 
-        <!-- Two -->
-        <section class="wrapper style1 container special">
-          <div class="row">
-            <div class="col-4 col-12-narrower">
-              <section>
-                <header>
-                  <h3>Research at Stanford</h3>
-                </header>
-                <p>
-                  Research with Congreve Lab
-                </p>
-                <footer>
-                  <ul class="buttons">
-                    <li><a href="https://congrevelab.stanford.edu/people" class="button small">Learn More</a></li>
+          <!-- Howard University Research -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="project-card perspective h-[500px] relative">
+              <div
+                class="project-card-inner absolute inset-0 transition-transform duration-700 transform-style-preserve"
+                onclick="this.classList.toggle('rotate')"
+              >
+                <div
+                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col hover-scale"
+                >
+                  <div class="flex-grow">
+                    <div
+                      class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+                    >
+                      <i class="fas fa-flask text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 heading">
+                      Howard University
+                    </h3>
+                    <p class="text-gray-600">
+                      Research on Raman spectroscopy and lunar analog minerals,
+                      investigating the composition and properties of materials
+                      relevant to space exploration.
+                    </p>
+                  </div>
+                  <div class="mt-4">
+                    <span
+                      class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary"
+                      >Spectroscopy</span
+                    >
+                    <span
+                      class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-accent/10 text-accent"
+                      >Planetary Science</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="project-card-back absolute w-full h-full backface-hidden transform rotate-y-180 glass-card rounded-xl p-6 flex flex-col justify-center"
+                >
+                  <h4 class="text-xl font-bold text-gray-900 mb-3 heading">
+                    Key Contributions
+                  </h4>
+                  <ul class="text-gray-600 space-y-2">
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i
+                      ><span
+                        >Conducted Raman spectroscopy analysis of lunar analog
+                        samples</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i
+                      ><span
+                        >Developed protocols for sample preparation and data
+                        collection</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle text-primary mt-1 mr-2"></i
+                      ><span
+                        >Presented findings at the Howard University Research
+                        Symposium</span
+                      >
+                    </li>
                   </ul>
-                </footer>
-              </section>
+                  <a
+                    href="https://laserspectroscopylaboratory.org/about/"
+                    target="_blank"
+                    class="mt-6 inline-flex items-center text-primary hover:text-primary-dark transition"
+                    >Visit Lab Website<i
+                      class="fas fa-external-link-alt ml-2"
+                    ></i
+                  ></a>
+                </div>
+              </div>
             </div>
-            <div class="col-4 col-12-narrower">
-              <section>
-                <header>
-                  <h3>Research with NASA JPL</h3>
-                </header>
-                <p>
-                  Dr. Su Yan's Research Group
-                </p>
-                <footer>
-                  <ul class="buttons">
-                    <li><a href="https://sites.google.com/view/sudoem/people" class="button small">Learn More</a></li>
-                  </ul>
-                </footer>
-              </section>
-            </div>
-            <div class="col-4 col-12-narrower">
-              <section>
-                <header>
-                  <h3>Research with Howard</h3>
-                </header>
-                <p>
-                  Laser Spectroscopy Laboratory
-                </p>
-                <footer>
-                  <ul class="buttons">
-                    <li><a href="https://laserspectroscopylaboratory.org/about/" class="button small">Learn More</a></li>
-                  </ul>
-                </footer>
-              </section>
+
+            <div class="glass-card rounded-xl p-8 hover-scale">
+              <h3 class="text-2xl font-bold text-gray-900 mb-6 heading">
+                Research Impact & Future Directions
+              </h3>
+              <p class="text-gray-600 mb-6">
+                My research experiences have spanned multiple disciplines, from
+                materials science and photonics to space technology and
+                planetary science. Each project has contributed to my
+                understanding of integrated photonics and its applications.
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <i class="fas fa-microscope text-primary mt-1 mr-3"></i>
+                  <div>
+                    <h4 class="font-semibold text-gray-900">
+                      Interdisciplinary Approach
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      Combining materials science, optics, and computational
+                      methods
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-rocket text-primary mt-1 mr-3"></i>
+                  <div>
+                    <h4 class="font-semibold text-gray-900">
+                      Real-World Applications
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      From space exploration to next-generation photonic devices
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="fas fa-lightbulb text-primary mt-1 mr-3"></i>
+                  <div>
+                    <h4 class="font-semibold text-gray-900">
+                      Innovation Focus
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      Developing novel materials and techniques for photonic
+                      applications
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
-      </article>
+        </div>
+      </section>
 
-      <!-- Footer -->
-      <footer id="footer">
-        <ul class="icons">
-          <li>
-            <a
-              href="https://www.youtube.com/@noahnetwork-h4z"
-              class="icon brands circle fa-youtube"
-              ><span class="label">Youtube</span></a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/oluwaseun-adeyeye-84a2a7253/"
-              class="icon brands circle fa-linkedin"
-              ><span class="label">LinkedIn</span></a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.instagram.com/noah.adeyeye/"
-              class="icon brands circle fa-instagram"
-              ><span class="label">Instagram</span></a
-            >
-          </li>
-          <li>
-            <a
-              href="https://github.com/NoahAdeyeye"
-              class="icon brands circle fa-github"
-              ><span class="label">Github</span></a
-            >
-          </li>
-          <li>
-            <a
-              href="mailto:oluwaseun.adeyeye@bison.howard.edu"
-              class="icon brands circle fa-readme"
-              ><span class="label">Email</span></a
-            >
-          </li>
-        </ul>
+      <!-- Research Skills Section -->
+      <section class="py-20 relative overflow-hidden bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 heading mb-4">
+              Research <span class="text-primary">Skills</span>
+            </h2>
+            <div class="w-24 h-1 primary-gradient mx-auto"></div>
+          </div>
 
-        <ul class="copyright">
-          <li>&copy; Oluwaseun Adeyeye</li>
-        </ul>
-      </footer>
-    </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-microscope text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Spectroscopy
+              </h3>
+              <p class="text-gray-600">
+                Raman spectroscopy, optical characterization, and materials
+                analysis
+              </p>
+            </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.scrollgress.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-lightbulb text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Photonics
+              </h3>
+              <p class="text-gray-600">
+                Integrated photonics, nonlinear optics, and laser systems
+              </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-code text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Programming
+              </h3>
+              <p class="text-gray-600">
+                Julia, Python, MATLAB for scientific computing and simulation
+              </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-satellite text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Space Technology
+              </h3>
+              <p class="text-gray-600">
+                Coronagraph design, exoplanet detection, and space
+                instrumentation
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="py-20 relative overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 heading">
+            Interested in Collaborating?
+          </h2>
+          <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            I'm always excited to discuss research opportunities and potential
+            collaborations in integrated photonics and related fields.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a
+              href="contact.html"
+              class="px-6 py-3 primary-gradient rounded-full text-white font-medium hover:shadow-lg transition-all hover-scale"
+            >
+              Get In Touch
+            </a>
+            <a
+              href="about.html"
+              class="px-6 py-3 border border-primary rounded-full text-primary font-medium hover:bg-primary/10 transition-all hover-scale"
+            >
+              Learn More About Me
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4 heading">Noah Adeyeye</h3>
+            <p class="text-gray-400">
+              Electrical Engineer | Researcher | Entrepreneur
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="home.html" class="text-gray-400 hover:text-white"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html" class="text-gray-400 hover:text-white"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a href="projects.html" class="text-gray-400 hover:text-white"
+                  >Projects</a
+                >
+              </li>
+              <li>
+                <a href="creative.html" class="text-gray-400 hover:text-white"
+                  >Creative</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Connect</h4>
+            <div class="flex space-x-4">
+              <a
+                href="https://www.linkedin.com/in/noah-adeyeye"
+                class="text-gray-400 hover:text-white"
+              >
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a
+                href="https://github.com/noahadeyeye"
+                class="text-gray-400 hover:text-white"
+              >
+                <i class="fab fa-github text-xl"></i>
+              </a>
+              <a
+                href="mailto:noah.adeyeye@bison.howard.edu"
+                class="text-gray-400 hover:text-white"
+              >
+                <i class="fas fa-envelope text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2024 Oluwaseun Noah Adeyeye. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Custom cursor
+      const cursor = document.getElementById("cursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Mobile menu toggle
+      const mobileMenuButton = document.querySelector(".md\\:hidden button");
+      const mobileMenu = document.querySelector(".md\\:hidden");
+
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener("click", () => {
+          // Add mobile menu functionality here
+          console.log("Mobile menu clicked");
+        });
+      }
+    </script>
   </body>
 </html>

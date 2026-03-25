@@ -1,112 +1,575 @@
-<!DOCTYPE html>
-<!--
-	Twenty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <title>Contact - Twenty by HTML5 UP</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Oluwaseun Noah Adeyeye</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap");
+
+      :root {
+        --primary: #4361ee;
+        --secondary: #3f37c9;
+        --accent: #4cc9f0;
+        --dark: #1a1a2e;
+        --light: #f8f9fa;
+        --text: #2b2d42;
+        --highlight: #7209b7;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: white;
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      #cursor {
+        width: 50px;
+        height: 50px;
+        background: var(--primary);
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 99999;
+        filter: url(#goo);
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease;
+      }
+
+      svg {
+        position: absolute;
+        width: 0;
+        height: 0;
+      }
+
+      .heading {
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .primary-gradient {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .hover-scale:hover {
+        transform: scale(1.05);
+      }
+
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-link {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        background: var(--primary);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .nav-link.active::after {
+        width: 100%;
+      }
+    </style>
   </head>
-  <body class="contact is-preload">
-    <div id="page-wrapper">
-      <!-- Header -->
-      <header id="header">
-        <h1 id="logo">
-          <a href="index.html"
-            >Oluwaseun Noah Adeyeye <span>Personal Portfolio</span></a
-          >
-        </h1>
-        <nav id="nav">
-          <ul>
-            <li class="current"><a href="index.html">Welcome</a></li>
-            <li class="submenu">
-              <a href="#">Pages</a>
-              <ul>
-                <li><a href="Resume.html">Resume</a></li>
-                <li><a href="Curriculum-Vitae.html">Curriculum Vitae</a></li>
-                <li><a href="Research.html">Research</a></li>
+  <body>
+    <!-- SVG Filter for Cursor -->
+    <svg>
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+            result="goo"
+          />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
 
-                <li class="submenu">
-                  <a href="#">Personal Projects</a>
-                  <ul>
-                    <li>
-                      <a href="Tree-Technologies.html">Tree Technologies</a>
-                    </li>
-                    <li><a href="Youtube.html">Youtube</a></li>
-                    <li><a href="Writing-Art.html">Writing / Art</a></li>
-                  </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </header>
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
 
-      <!-- Main -->
-      <article id="main">
-        <header class="special container">
-          <span class="icon solid fa-envelope"></span>
-          <h2>Get In Touch</h2>
-          <p>Here are some ways you can connect with me.</p>
-        </header>
-
-
-      <!-- Footer -->
-      <footer id="footer">
-        <ul class="icons">
-          <li>
-            <a  href="https://www.youtube.com/@noahnetwork-h4z" class="icon brands circle fa-youtube"
-              ><span class="label">Youtube</span></a
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex-shrink-0">
+            <a
+              href="home.html"
+              class="text-2xl font-bold text-gray-900 heading"
             >
-          </li>
-          <li>
-            <a  href="https://www.linkedin.com/in/oluwaseun-adeyeye-84a2a7253/" class="icon brands circle fa-linkedin"
-              ><span class="label">LinkedIn</span></a
+              Noah <span class="text-primary">Adeyeye</span>
+            </a>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a
+                href="home.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Home
+              </a>
+              <a
+                href="about.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                About
+              </a>
+              <a
+                href="research.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Research
+              </a>
+              <a
+                href="projects.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Projects
+              </a>
+              <a
+                href="creative.html"
+                class="nav-link text-gray-600 hover:text-gray-900 font-medium"
+              >
+                Creative
+              </a>
+              <a
+                href="contact.html"
+                class="nav-link active text-gray-900 font-medium"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+          <div class="md:hidden">
+            <button
+              type="button"
+              class="text-gray-600 hover:text-gray-900 focus:outline-none"
             >
-          </li>
-          <li>
-            <a href="https://www.instagram.com/noah.adeyeye/" class="icon brands circle fa-instagram"
-              ><span class="label">Instagram</span></a
-            >
-          </li>
-          <li>
-            <a  href="https://github.com/NoahAdeyeye" class="icon brands circle fa-github"
-              ><span class="label">Github</span></a
-            >
-          </li>
-          <li>
-            <a  href="mailto:oluwaseun.adeyeye@bison.howard.edu" class="icon brands circle fa-readme"
-              ><span class="label">Email</span></a
-            >
-          </li>
-        </ul>
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-        <ul class="copyright">
-          <li>&copy; Oluwaseun Adeyeye</li>
-        </ul>
-      </footer>
-    </div>
+    <!-- Main Content -->
+    <main class="pt-16">
+      <!-- Hero Section -->
+      <section class="py-20 relative overflow-hidden bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold text-gray-900 heading mb-4">
+              Get In <span class="text-primary">Touch</span>
+            </h1>
+            <div class="w-24 h-1 primary-gradient mx-auto"></div>
+            <p class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto">
+              Interested in collaborating, learning more about my work, or just
+              want to connect? I'd love to hear from you!
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.scrollgress.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+      <!-- Contact Information Section -->
+      <section class="py-20 relative overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto">
+            <div class="glass-card rounded-xl p-8 hover-scale">
+              <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2 heading">
+                  Let's Connect
+                </h3>
+                <p class="text-gray-600">
+                  Interested in collaborating or learning more about my work?
+                  Reach out through any of these channels.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+                <a
+                  href="https://www.linkedin.com/in/oluwaseun-adeyeye-84a2a7253/"
+                  class="social-icon flex flex-col items-center justify-center p-4 rounded-full bg-gray-50 hover:bg-gray-100 transition hover-scale"
+                >
+                  <i class="fab fa-linkedin-in text-2xl text-primary mb-2"></i>
+                  <span class="text-xs text-gray-600">LinkedIn</span>
+                </a>
+                <a
+                  href="https://www.youtube.com/@noahnetwork-h4z"
+                  class="social-icon flex flex-col items-center justify-center p-4 rounded-full bg-gray-50 hover:bg-gray-100 transition hover-scale"
+                >
+                  <i class="fab fa-youtube text-2xl text-primary mb-2"></i>
+                  <span class="text-xs text-gray-600">YouTube</span>
+                </a>
+                <a
+                  href="https://github.com/NoahAdeyeye"
+                  class="social-icon flex flex-col items-center justify-center p-4 rounded-full bg-gray-50 hover:bg-gray-100 transition hover-scale"
+                >
+                  <i class="fab fa-github text-2xl text-primary mb-2"></i>
+                  <span class="text-xs text-gray-600">GitHub</span>
+                </a>
+                <a
+                  href="https://www.instagram.com/noah.adeyeye/?hl=en"
+                  class="social-icon flex flex-col items-center justify-center p-4 rounded-full bg-gray-50 hover:bg-gray-100 transition hover-scale"
+                >
+                  <i class="fab fa-instagram text-2xl text-primary mb-2"></i>
+                  <span class="text-xs text-gray-600">Instagram</span>
+                </a>
+                <a
+                  href="mailto:oluwaseun.adeyeye@bison.howard.edu"
+                  class="social-icon flex flex-col items-center justify-center p-4 rounded-full bg-gray-50 hover:bg-gray-100 transition hover-scale col-span-2 md:col-span-1"
+                >
+                  <i class="fas fa-envelope text-2xl text-primary mb-2"></i>
+                  <span class="text-xs text-gray-600">Email</span>
+                </a>
+              </div>
+
+              <div class="text-center">
+                <p class="text-gray-600 mb-4">
+                  For professional inquiries, please email:
+                </p>
+                <a
+                  href="mailto:oluwaseun.adeyeye@bison.howard.edu"
+                  class="text-primary font-medium text-lg hover:text-primary-dark transition"
+                >
+                  oluwaseun.adeyeye@bison.howard.edu
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Reasons Section -->
+      <section class="py-20 relative overflow-hidden bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 heading mb-4">
+              Why <span class="text-primary">Connect</span>
+            </h2>
+            <div class="w-24 h-1 primary-gradient mx-auto"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-handshake text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Collaboration
+              </h3>
+              <p class="text-gray-600">
+                Interested in research partnerships, entrepreneurial ventures,
+                or technical collaborations in photonics and engineering.
+              </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-graduation-cap text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Academic Opportunities
+              </h3>
+              <p class="text-gray-600">
+                Graduate school applications, research positions, internships,
+                or academic mentorship opportunities.
+              </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-lightbulb text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Innovation & Ideas
+              </h3>
+              <p class="text-gray-600">
+                Discussing new technologies, creative projects, or innovative
+                approaches to engineering challenges.
+              </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-users text-xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Networking
+              </h3>
+              <p class="text-gray-600">
+                Building professional relationships, sharing experiences, or
+                connecting with like-minded individuals in STEM.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Links Section -->
+      <section class="py-20 relative overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 heading mb-4">
+              Quick <span class="text-primary">Links</span>
+            </h2>
+            <div class="w-24 h-1 primary-gradient mx-auto"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card rounded-xl p-6 hover-scale text-center">
+              <div
+                class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto"
+              >
+                <i class="fas fa-file-alt text-2xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Resume & CV
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Download my latest resume and curriculum vitae for detailed
+                information about my background and experience.
+              </p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a
+                  href="Oluwaseun_Resume_Fall25Final.pdf"
+                  class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium hover:bg-primary/20 transition"
+                >
+                  Resume PDF
+                </a>
+                <a
+                  href="Oluwaseun_CV_Fall25.pdf"
+                  class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium hover:bg-primary/20 transition"
+                >
+                  CV PDF
+                </a>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale text-center">
+              <div
+                class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto"
+              >
+                <i class="fas fa-microscope text-2xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Research Work
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Explore my research projects in integrated photonics, materials
+                science, and space technology.
+              </p>
+              <a
+                href="research.html"
+                class="px-6 py-2 primary-gradient rounded-full text-white font-medium hover:shadow-lg transition-all hover-scale inline-block"
+              >
+                View Research
+              </a>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 hover-scale text-center">
+              <div
+                class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto"
+              >
+                <i class="fas fa-rocket text-2xl text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 heading">
+                Projects & Ventures
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Learn about Tree Technologies and other entrepreneurial projects
+                I'm working on.
+              </p>
+              <a
+                href="projects.html"
+                class="px-6 py-2 primary-gradient rounded-full text-white font-medium hover:shadow-lg transition-all hover-scale inline-block"
+              >
+                View Projects
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="py-20 relative overflow-hidden bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 heading">
+            Ready to Start a Conversation?
+          </h2>
+          <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            Whether you're interested in research collaboration, entrepreneurial
+            opportunities, or just want to connect with a fellow STEM
+            enthusiast, I'm always excited to meet new people!
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a
+              href="mailto:oluwaseun.adeyeye@bison.howard.edu"
+              class="px-6 py-3 primary-gradient rounded-full text-white font-medium hover:shadow-lg transition-all hover-scale"
+            >
+              <i class="fas fa-envelope mr-2"></i> Send Email
+            </a>
+            <a
+              href="https://www.linkedin.com/in/oluwaseun-adeyeye-84a2a7253/"
+              class="px-6 py-3 border border-primary rounded-full text-primary font-medium hover:bg-primary/10 transition-all hover-scale"
+            >
+              <i class="fab fa-linkedin mr-2"></i> Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4 heading">Noah Adeyeye</h3>
+            <p class="text-gray-400">
+              Electrical Engineer | Researcher | Entrepreneur
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="home.html" class="text-gray-400 hover:text-white"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html" class="text-gray-400 hover:text-white"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a href="research.html" class="text-gray-400 hover:text-white"
+                  >Research</a
+                >
+              </li>
+              <li>
+                <a href="projects.html" class="text-gray-400 hover:text-white"
+                  >Projects</a
+                >
+              </li>
+              <li>
+                <a href="creative.html" class="text-gray-400 hover:text-white"
+                  >Creative</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Connect</h4>
+            <div class="flex space-x-4">
+              <a
+                href="https://www.linkedin.com/in/oluwaseun-adeyeye-84a2a7253/"
+                class="text-gray-400 hover:text-white"
+              >
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a
+                href="https://github.com/NoahAdeyeye"
+                class="text-gray-400 hover:text-white"
+              >
+                <i class="fab fa-github text-xl"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/@noahnetwork-h4z"
+                class="text-gray-400 hover:text-white"
+              >
+                <i class="fab fa-youtube text-xl"></i>
+              </a>
+              <a
+                href="mailto:oluwaseun.adeyeye@bison.howard.edu"
+                class="text-gray-400 hover:text-white"
+              >
+                <i class="fas fa-envelope text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2024 Oluwaseun Noah Adeyeye. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Custom cursor
+      const cursor = document.getElementById("cursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Mobile menu toggle
+      const mobileMenuButton = document.querySelector(".md\\:hidden button");
+      const mobileMenu = document.querySelector(".md\\:hidden");
+
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener("click", () => {
+          // Add mobile menu functionality here
+          console.log("Mobile menu clicked");
+        });
+      }
+    </script>
   </body>
 </html>
