@@ -592,7 +592,7 @@
                 onclick="this.classList.toggle('rotate')"
               >
                 <div
-                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col hover-scale"
+                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col"
                 >
                   <div class="flex-grow">
                     <div
@@ -621,7 +621,7 @@
                   </div>
                 </div>
                 <div
-                  class="project-card-back absolute w-full h-full backface-hidden transform rotate-y-180 glass-card rounded-xl p-6 flex flex-col justify-center"
+                  class="project-card-back absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col justify-center"
                 >
                   <h4 class="text-xl font-bold text-gray-900 mb-3 heading">
                     Key Contributions
@@ -667,7 +667,7 @@
                 onclick="this.classList.toggle('rotate')"
               >
                 <div
-                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col hover-scale"
+                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col"
                 >
                   <div class="flex-grow">
                     <div
@@ -698,7 +698,7 @@
                   </div>
                 </div>
                 <div
-                  class="project-card-back absolute w-full h-full backface-hidden transform rotate-y-180 glass-card rounded-xl p-6 flex flex-col justify-center"
+                  class="project-card-back absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col justify-center"
                 >
                   <h4 class="text-xl font-bold text-gray-900 mb-3 heading">
                     Key Contributions
@@ -744,7 +744,7 @@
               >
                 <!-- Front of Card -->
                 <div
-                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col hover-scale"
+                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col"
                 >
                   <div class="flex-grow">
                     <div
@@ -776,7 +776,7 @@
 
                 <!-- Back of Card -->
                 <div
-                  class="project-card-back absolute w-full h-full backface-hidden transform rotate-y-180 glass-card rounded-xl p-6 flex flex-col justify-center"
+                  class="project-card-back absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col justify-center"
                 >
                   <h4 class="text-xl font-bold text-gray-900 mb-3 heading">
                     Key Contributions
@@ -822,7 +822,7 @@
                 onclick="this.classList.toggle('rotate')"
               >
                 <div
-                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col hover-scale"
+                  class="project-card-front absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col"
                 >
                   <div class="flex-grow">
                     <div
@@ -851,7 +851,7 @@
                   </div>
                 </div>
                 <div
-                  class="project-card-back absolute w-full h-full backface-hidden transform rotate-y-180 glass-card rounded-xl p-6 flex flex-col justify-center"
+                  class="project-card-back absolute w-full h-full backface-hidden glass-card rounded-xl p-6 flex flex-col justify-center"
                 >
                   <h4 class="text-xl font-bold text-gray-900 mb-3 heading">
                     Key Contributions
@@ -1344,6 +1344,7 @@
         gsap.registerPlugin(ScrollTrigger);
 
         gsap.utils.toArray(".glass-card, .grid-item").forEach((box) => {
+          if (box.closest(".project-card")) return;
           gsap.from(box, {
             scrollTrigger: {
               trigger: box,
